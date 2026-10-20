@@ -27,6 +27,7 @@ Each repository has its own README with architecture notes, commands and environ
 | [README.md](README.md) | This overview |
 | [deployment-instructions.md](deployment-instructions.md) | Run it locally and deploy it, step by step |
 | [testcases.md](testcases.md) | How to run every test suite and what each one checks |
+| [Security Self-Assessment.pdf](Security%20Self-Assessment.pdf) | The full security self-assessment: permission tiers, 22 known risks with status, 76 adversarial test cases with their findings, and the remediation roadmap (PDF, 20 pages) |
 | [security-edge-case-report.md](security-edge-case-report.md) | 76 hostile-input edge cases for the backend and the AI service, what they found, and what was fixed |
 
 ## How it fits together
