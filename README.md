@@ -52,6 +52,22 @@ Browser ── frontend (Next.js, :3000)
 2. **Dashboard and advisory chat**: portfolio valuation, asset classification, discover and news pages, and a RAG chat with citations and a number guardrail.
 3. **Personalized daily brief**: matching engine for daily picks and a WhatsApp message scheduler (opt-in, per-user time; optional, off by default).
 
+## Diagrams
+
+Standalone HTML files in [`diagrams/`](diagrams/); open them in a browser (clone the repo, or use an HTML preview).
+
+| File | Shows |
+|------|-------|
+| `system-architecture.html`, `system-architecture-layered.html` | services, data stores and external providers |
+| `module-breakdown.html` | the three modules: profiling engine, dashboard and advisory chat, daily brief |
+| `core-algorithms.html` | the algorithm behind each module (14 diagrams) |
+| `chat-sequence.html` | one advisory chat turn, end to end |
+| `matching-engine.html` | the five rule layers of product matching |
+| `trust-layers.html` | rules decide, the language model only words the result |
+| `user-journey.html` | a user from first visit to the daily brief |
+| `data-model.html` | the core tables |
+| `security-defence-in-depth.html`, `security-data-protection.html` | security layers and how personal data is protected |
+
 ## Quick start
 
 See [deployment-instructions.md](deployment-instructions.md). Short version: PostgreSQL, then `make migrate-up` and
