@@ -54,19 +54,28 @@ Browser ── frontend (Next.js, :3000)
 
 ## Diagrams
 
-Standalone HTML files in [`diagrams/`](diagrams/); open them in a browser (clone the repo, or use an HTML preview).
+PNG images are in [`diagrams/png/`](diagrams/png/); the interactive HTML sources are in [`diagrams/`](diagrams/).
 
-| File | Shows |
-|------|-------|
-| `system-architecture.html`, `system-architecture-layered.html` | services, data stores and external providers |
-| `module-breakdown.html` | the three modules: profiling engine, dashboard and advisory chat, daily brief |
-| `core-algorithms.html` | the algorithm behind each module (14 diagrams) |
-| `chat-sequence.html` | one advisory chat turn, end to end |
-| `matching-engine.html` | the five rule layers of product matching |
-| `trust-layers.html` | rules decide, the language model only words the result |
-| `user-journey.html` | a user from first visit to the daily brief |
-| `data-model.html` | the core tables |
-| `security-defence-in-depth.html`, `security-data-protection.html` | security layers and how personal data is protected |
+### System architecture
+![System architecture](diagrams/png/system-architecture.png)
+
+### The three modules
+![Financial profiling engine](diagrams/png/module-breakdown-sF1.png)
+![Dashboard and advisory chat](diagrams/png/module-breakdown-sF2.png)
+![Personalized daily brief](diagrams/png/module-breakdown-sF3.png)
+
+### All diagrams
+
+| Image | Shows |
+|-------|-------|
+| [system-architecture](diagrams/png/system-architecture.png), [layered](diagrams/png/system-architecture-layered.png) | services, data stores and external providers |
+| [chat-sequence](diagrams/png/chat-sequence.png) | one advisory chat turn, end to end |
+| [matching-engine](diagrams/png/matching-engine.png) | the five rule layers of product matching |
+| [trust-layers](diagrams/png/trust-layers.png) | rules decide, the language model only words the result |
+| [user-journey](diagrams/png/user-journey.png) | a user from first visit to the daily brief |
+| [data-model](diagrams/png/data-model.png) | the core tables |
+| [security-defence-in-depth](diagrams/png/security-defence-in-depth.png), [security-data-protection](diagrams/png/security-data-protection.png) | security layers and how personal data is protected |
+| core algorithms, one image per module: [1A](diagrams/png/core-algorithms-s1A.png) [1B](diagrams/png/core-algorithms-s1B.png) [1C](diagrams/png/core-algorithms-s1C.png) [02](diagrams/png/core-algorithms-s02.png) [03](diagrams/png/core-algorithms-s03.png) [04](diagrams/png/core-algorithms-s04.png) [05](diagrams/png/core-algorithms-s05.png) [06](diagrams/png/core-algorithms-s06.png) [07](diagrams/png/core-algorithms-s07.png) [08](diagrams/png/core-algorithms-s08.png) [09](diagrams/png/core-algorithms-s09.png) [10](diagrams/png/core-algorithms-s10.png) [11](diagrams/png/core-algorithms-s11.png) [12](diagrams/png/core-algorithms-s12.png) | chatbot and RAG, profiling, matching, daily brief, WhatsApp, dashboard, valuation, classifier, discover, news, auth |
 
 ## Quick start
 
