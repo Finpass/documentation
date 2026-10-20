@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finpass system architecture by layer</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Poppins, sans-serif; background: linear-gradient(90deg,#1c263b 0%,#3a5ec0 60%,#4a82ec 100%) fixed; color: #ffffff; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 6rem 2rem 3rem; }
+.frame { max-width: 1200px; width: 100%; }
+.diagram-container { width: 100%; overflow-x: auto; }
+.eyebrow { font-family: Poppins, sans-serif; font-size: .66rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: #ffffff; opacity: .65; margin-bottom: .5rem; }
+h1 { font-family: Poppins, sans-serif; font-size: clamp(1.5rem, 2.4vw + .75rem, 2rem); font-weight: 400; letter-spacing: -.02em; line-height: 1.15; margin-bottom: 1.5rem; }
+svg { width: 100%; display: block; }
+@media print { .diagram-container { overflow-x: visible; } svg { min-width: 0 !important; } }
+</style>
+</head>
+<body>
+<div class="frame">
+<div class="diagram-container">
+<svg viewBox="0 0 1040 815" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sa2-title sa2-desc" style="min-width:1040px">
+<title id="sa2-title">Finpass system architecture by layer</title>
+<desc id="sa2-desc">WhatsApp and the Next.js client are the entry points. Next.js calls the Go API over REST with auth. The Go API owns PostgreSQL, imports prices from Yahoo Finance and CoinGecko, sends the daily briefing through a WhatsApp gateway to the WhatsApp Business API, and calls the FastAPI AI service with an internal API key. The AI service searches and reranks passages in an embedded ChromaDB, loads the corpus from Cloudflare R2 at startup, uses OpenRouter for embeddings and completion, and exports traces to Phoenix.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto-start-reverse"><polygon points="0 0, 8 3, 0 6" fill="#ffffff"/></marker></defs>
+<rect x="28" y="16" width="984" height="139" rx="10" fill="rgba(255,255,255,0.04)" stroke="#ffffff" stroke-opacity="0.3" stroke-width="1"/>
+<text x="45" y="36" text-anchor="start" font-family="Poppins, sans-serif" font-size="8" font-weight="400" letter-spacing="0.14em" fill="#ffffff" fill-opacity="0.65">CLIENT &amp; INTERACTION</text>
+<rect x="28" y="196" width="435" height="275" rx="10" fill="rgba(255,255,255,0.04)" stroke="#ffffff" stroke-opacity="0.3" stroke-width="1"/>
+<text x="45" y="216" text-anchor="start" font-family="Poppins, sans-serif" font-size="8" font-weight="400" letter-spacing="0.14em" fill="#ffffff" fill-opacity="0.65">CORE BACKEND · GO</text>
+<rect x="538" y="196" width="474" height="275" rx="10" fill="rgba(255,255,255,0.04)" stroke="#ffffff" stroke-opacity="0.3" stroke-width="1"/>
+<text x="555" y="216" text-anchor="start" font-family="Poppins, sans-serif" font-size="8" font-weight="400" letter-spacing="0.14em" fill="#ffffff" fill-opacity="0.65">AI MICROSERVICE · PYTHON</text>
+<rect x="28" y="516" width="984" height="95" rx="10" fill="rgba(255,255,255,0.04)" stroke="#ffffff" stroke-opacity="0.3" stroke-width="1"/>
+<text x="45" y="536" text-anchor="start" font-family="Poppins, sans-serif" font-size="8" font-weight="400" letter-spacing="0.14em" fill="#ffffff" fill-opacity="0.65">DATA &amp; STORAGE</text>
+<rect x="28" y="654" width="984" height="96" rx="10" fill="rgba(255,255,255,0.04)" stroke="#ffffff" stroke-opacity="0.3" stroke-width="1"/>
+<text x="45" y="674" text-anchor="start" font-family="Poppins, sans-serif" font-size="8" font-weight="400" letter-spacing="0.14em" fill="#ffffff" fill-opacity="0.65">EXTERNAL SERVICES</text>
+<rect x="45" y="46" width="425" height="92" rx="6" fill="rgba(16,22,36,0.28)" stroke="#ffffff" stroke-opacity="0.8" stroke-width="1" stroke-dasharray="4,3"/>
+<rect x="60" y="60" width="30" height="30" rx="8" fill="#ffffff" fill-opacity="0.94"/>
+<text x="75" y="79" text-anchor="middle" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="#101624">WA</text>
+<text x="101" y="71" text-anchor="start" font-family="Poppins, sans-serif" font-size="15" font-weight="600" fill="#ffffff">WhatsApp User</text>
+<text x="101" y="89" text-anchor="start" font-family="Poppins, sans-serif" font-size="9.5" font-weight="400" fill="#ffffff" fill-opacity="0.65">Receives the daily briefing</text>
+<rect x="559" y="46" width="441" height="92" rx="6" fill="rgba(255,255,255,0.12)" stroke="#ffffff" stroke-opacity="0.75" stroke-width="1"/>
+<rect x="574" y="60" width="30" height="30" rx="8" fill="#ffffff" fill-opacity="0.94"/>
+<text x="589" y="79" text-anchor="middle" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="#101624">N</text>
+<text x="615" y="71" text-anchor="start" font-family="Poppins, sans-serif" font-size="15" font-weight="600" fill="#ffffff">Frontend client</text>
+<text x="615" y="89" text-anchor="start" font-family="Poppins, sans-serif" font-size="9.5" font-weight="400" fill="#ffffff" fill-opacity="0.65">Next.js · TypeScript</text>
+<rect x="571" y="103" width="135" height="23" rx="5" fill="rgba(16,22,36,0.5)" stroke="#ffffff" stroke-opacity="0" stroke-width="1"/>
+<text x="638.5" y="118" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill="#ffffff">Onboarding wizard</text>
+<rect x="714" y="103" width="135" height="23" rx="5" fill="rgba(16,22,36,0.5)" stroke="#ffffff" stroke-opacity="0" stroke-width="1"/>
+<text x="781.5" y="118" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill="#ffffff">Financial dashboard</text>
+<rect x="857" y="103" width="135" height="23" rx="5" fill="rgba(16,22,36,0.5)" stroke="#ffffff" stroke-opacity="0" stroke-width="1"/>
+<text x="924.5" y="118" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill="#ffffff">Advisory chat UI</text>
+<rect x="45" y="222" width="402" height="156" rx="6" fill="rgba(139,124,246,0.55)" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6"/>
+<rect x="60" y="236" width="30" height="30" rx="8" fill="#ffffff" fill-opacity="0.94"/>
+<text x="75" y="255" text-anchor="middle" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="#101624">Go</text>
+<text x="101" y="247" text-anchor="start" font-family="Poppins, sans-serif" font-size="15" font-weight="600" fill="#ffffff">Go API backend</text>
+<text x="101" y="265" text-anchor="start" font-family="Poppins, sans-serif" font-size="9.5" font-weight="400" fill="#ffffff" fill-opacity="0.65">Main API · internal key required</text>
+<rect x="59" y="282" width="183" height="36" rx="5" fill="rgba(16,22,36,0.32)" stroke="#ffffff" stroke-opacity="0" stroke-width="1"/>
+<text x="69" y="297" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="600" fill="#ffffff">API routing</text>
+<text x="69" y="310" text-anchor="start" font-family="Poppins, sans-serif" font-size="7.5" font-weight="400" fill="#ffffff" fill-opacity="0.7">Routing &amp; middleware</text>
+<rect x="255" y="282" width="179" height="36" rx="5" fill="rgba(16,22,36,0.32)" stroke="#ffffff" stroke-opacity="0" stroke-width="1"/>
+<text x="265" y="297" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="600" fill="#ffffff">Auth service</text>
+<text x="265" y="310" text-anchor="start" font-family="Poppins, sans-serif" font-size="7.5" font-weight="400" fill="#ffffff" fill-opacity="0.7">Login, sessions, tokens</text>
+<rect x="59" y="326" width="183" height="36" rx="5" fill="rgba(16,22,36,0.32)" stroke="#ffffff" stroke-opacity="0" stroke-width="1"/>
+<text x="69" y="341" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="600" fill="#ffffff">Market data importer</text>
+<text x="69" y="354" text-anchor="start" font-family="Poppins, sans-serif" font-size="7.5" font-weight="400" fill="#ffffff" fill-opacity="0.7">Prices, asset classification</text>
+<rect x="255" y="326" width="179" height="36" rx="5" fill="rgba(16,22,36,0.32)" stroke="#ffffff" stroke-opacity="0" stroke-width="1"/>
+<text x="265" y="341" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="600" fill="#ffffff">Questionnaire Rules Engine v4.0</text>
+<text x="265" y="354" text-anchor="start" font-family="Poppins, sans-serif" font-size="7.5" font-weight="400" fill="#ffffff" fill-opacity="0.7">Scores risk profile from answers</text>
+<rect x="230" y="407" width="216" height="48" rx="6" fill="rgba(16,22,36,0.5)" stroke="#ffffff" stroke-opacity="0.6" stroke-width="1"/>
+<rect x="240" y="416" width="30" height="30" rx="8" fill="#ffffff" fill-opacity="0.94"/>
+<text x="255" y="435" text-anchor="middle" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="#101624">WA</text>
+<text x="282" y="432" text-anchor="start" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#ffffff">WhatsApp gateway</text>
+<text x="282" y="446" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill="#ffffff" fill-opacity="0.65">WA message dispatcher (Go)</text>
+<rect x="555" y="222" width="440" height="213" rx="6" fill="rgba(139,124,246,0.55)" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6"/>
+<rect x="570" y="236" width="30" height="30" rx="8" fill="#ffffff" fill-opacity="0.94"/>
+<text x="585" y="255" text-anchor="middle" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="#101624">Fa</text>
+<text x="611" y="247" text-anchor="start" font-family="Poppins, sans-serif" font-size="15" font-weight="600" fill="#ffffff">Python FastAPI service</text>
+<text x="611" y="265" text-anchor="start" font-family="Poppins, sans-serif" font-size="9.5" font-weight="400" fill="#ffffff" fill-opacity="0.65">AI microservice</text>
+<rect x="568" y="282" width="414" height="30" rx="5" fill="rgba(16,22,36,0.32)" stroke="#ffffff" stroke-opacity="0" stroke-width="1"/>
+<text x="580" y="301" text-anchor="start" font-family="Poppins, sans-serif" font-size="9" font-weight="600" fill="#ffffff">Chat orchestration</text>
+<text x="758" y="301" text-anchor="start" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff" fill-opacity="0.7">Conversation flow &amp; context</text>
+<rect x="568" y="318" width="414" height="30" rx="5" fill="rgba(16,22,36,0.32)" stroke="#ffffff" stroke-opacity="0" stroke-width="1"/>
+<text x="580" y="337" text-anchor="start" font-family="Poppins, sans-serif" font-size="9" font-weight="600" fill="#ffffff">Passage retrieval</text>
+<text x="758" y="337" text-anchor="start" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff" fill-opacity="0.7">Vector search + rerank</text>
+<rect x="568" y="354" width="414" height="30" rx="5" fill="rgba(16,22,36,0.32)" stroke="#ffffff" stroke-opacity="0" stroke-width="1"/>
+<text x="580" y="373" text-anchor="start" font-family="Poppins, sans-serif" font-size="9" font-weight="600" fill="#ffffff">Prompt loader</text>
+<text x="758" y="373" text-anchor="start" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff" fill-opacity="0.7">Loads &amp; fills prompt templates</text>
+<rect x="568" y="390" width="414" height="30" rx="5" fill="rgba(16,22,36,0.32)" stroke="#ffffff" stroke-opacity="0" stroke-width="1"/>
+<text x="580" y="409" text-anchor="start" font-family="Poppins, sans-serif" font-size="9" font-weight="600" fill="#ffffff">Guardrails</text>
+<text x="758" y="409" text-anchor="start" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff" fill-opacity="0.7">Injection guard in, citation + number checks out</text>
+<rect x="175" y="544" width="204" height="55" rx="6" fill="rgba(110,185,240,0.35)" stroke="#ffffff" stroke-opacity="0.8" stroke-width="1"/>
+<rect x="185" y="556" width="30" height="30" rx="8" fill="#ffffff" fill-opacity="0.94"/>
+<text x="200" y="575" text-anchor="middle" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="#101624">PG</text>
+<text x="225" y="566" text-anchor="start" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#ffffff">PostgreSQL</text>
+<text x="225" y="582" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill="#ffffff" fill-opacity="0.65">Profiles, answers, market data</text>
+<rect x="487" y="544" width="204" height="55" rx="6" fill="rgba(110,185,240,0.35)" stroke="#ffffff" stroke-opacity="0.8" stroke-width="1"/>
+<rect x="497" y="556" width="30" height="30" rx="8" fill="#ffffff" fill-opacity="0.94"/>
+<text x="512" y="575" text-anchor="middle" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="#101624">Ch</text>
+<text x="537" y="566" text-anchor="start" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#ffffff">Chroma embedded</text>
+<text x="537" y="582" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill="#ffffff" fill-opacity="0.65">Vector index of the RAG corpus</text>
+<rect x="711" y="544" width="204" height="55" rx="6" fill="rgba(110,185,240,0.35)" stroke="#ffffff" stroke-opacity="0.8" stroke-width="1"/>
+<rect x="721" y="556" width="30" height="30" rx="8" fill="#ffffff" fill-opacity="0.94"/>
+<text x="736" y="575" text-anchor="middle" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="#101624">R2</text>
+<text x="761" y="566" text-anchor="start" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#ffffff">Cloudflare R2</text>
+<text x="761" y="582" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill="#ffffff" fill-opacity="0.65">Source docs (OJK &amp; reports)</text>
+<rect x="45" y="683" width="184" height="53" rx="6" fill="rgba(16,22,36,0.28)" stroke="#ffffff" stroke-opacity="0.8" stroke-width="1" stroke-dasharray="4,3"/>
+<text x="57" y="706" text-anchor="start" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#ffffff">Market data provider</text>
+<text x="57" y="722" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill="#ffffff" fill-opacity="0.65">Prices for the importer</text>
+<rect x="249" y="683" width="231" height="53" rx="6" fill="rgba(16,22,36,0.28)" stroke="#ffffff" stroke-opacity="0.8" stroke-width="1" stroke-dasharray="4,3"/>
+<rect x="259" y="694" width="30" height="30" rx="8" fill="#ffffff" fill-opacity="0.94"/>
+<text x="274" y="713" text-anchor="middle" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="#101624">WA</text>
+<text x="299" y="706" text-anchor="start" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#ffffff">WhatsApp Business API</text>
+<text x="299" y="722" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill="#ffffff" fill-opacity="0.65">Daily briefing delivery</text>
+<rect x="589" y="683" width="251" height="53" rx="6" fill="rgba(16,22,36,0.28)" stroke="#ffffff" stroke-opacity="0.8" stroke-width="1" stroke-dasharray="4,3"/>
+<rect x="599" y="694" width="30" height="30" rx="8" fill="#ffffff" fill-opacity="0.94"/>
+<text x="614" y="713" text-anchor="middle" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="#101624">OR</text>
+<text x="639" y="706" text-anchor="start" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#ffffff">OpenRouter API</text>
+<text x="639" y="722" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill="#ffffff" fill-opacity="0.65">bge-m3 embeddings · completion (Gemma)</text>
+<rect x="861" y="683" width="139" height="53" rx="6" fill="rgba(16,22,36,0.28)" stroke="#ffffff" stroke-opacity="0.8" stroke-width="1" stroke-dasharray="4,3"/>
+<rect x="871" y="694" width="30" height="30" rx="8" fill="#ffffff" fill-opacity="0.94"/>
+<text x="886" y="713" text-anchor="middle" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="#101624">Px</text>
+<text x="911" y="706" text-anchor="start" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#ffffff">Phoenix</text>
+<text x="911" y="722" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill="#ffffff" fill-opacity="0.65">Trace export</text>
+<path d="M728,138 L728,168 Q728,175 721,175 L253,175 Q246,175 246,182 L246,222" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" marker-end="url(#arrow)"/>
+<path d="M447,302 L555,302" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" marker-end="url(#arrow)"/>
+<path d="M202,378 L202,544" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<path d="M412,378 L412,407" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" marker-end="url(#arrow)"/>
+<path d="M412,455 L412,683" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" marker-end="url(#arrow)"/>
+<path d="M147,683 L147,362" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" marker-end="url(#arrow)"/>
+<path d="M589,435 L589,544" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" marker-end="url(#arrow)"/>
+<path d="M813,544 L813,435" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" marker-end="url(#arrow)"/>
+<path d="M700,435 L700,683" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" marker-end="url(#arrow)"/>
+<path d="M983,435 L983,683" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#arrow)"/>
+<path d="M365,736 L365,766 L13,766 L13,100 Q13,92 21,92 L45,92" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#arrow)"/>
+<rect x="427.8" y="167.5" width="112.4" height="15" rx="7.5" fill="#1c263b" stroke="#ffffff" stroke-opacity="0.25"/>
+<text x="484" y="177.7" text-anchor="middle" font-family="Poppins, sans-serif" font-size="7.5" font-weight="500" letter-spacing="0.1em" fill="#ffffff">HTTP REST / AUTH</text>
+<rect x="456" y="289" width="90" height="26" rx="7" fill="#1c263b" stroke="#ffffff" stroke-opacity="0.25"/>
+<text x="501" y="299" text-anchor="middle" font-family="Poppins, sans-serif" font-size="7.5" font-weight="500" letter-spacing="0.1em" fill="#ffffff">AI REQUEST</text>
+<text x="501" y="310" text-anchor="middle" font-family="Poppins, sans-serif" font-size="7.5" font-weight="500" letter-spacing="0.1em" fill="#ffffff">+ INTERNAL KEY</text>
+<rect x="157.6" y="486.5" width="88.80000000000001" height="15" rx="7.5" fill="#1c263b" stroke="#ffffff" stroke-opacity="0.25"/>
+<text x="202" y="496.7" text-anchor="middle" font-family="Poppins, sans-serif" font-size="7.5" font-weight="500" letter-spacing="0.1em" fill="#ffffff">READ / WRITE</text>
+<rect x="325.65" y="385.5" width="94.7" height="15" rx="7.5" fill="#1c263b" stroke="#ffffff" stroke-opacity="0.25"/>
+<text x="373" y="395.7" text-anchor="middle" font-family="Poppins, sans-serif" font-size="7.5" font-weight="500" letter-spacing="0.1em" fill="#ffffff">SEND BRIEFING</text>
+<rect x="529.85" y="486.5" width="118.30000000000001" height="15" rx="7.5" fill="#1c263b" stroke="#ffffff" stroke-opacity="0.25"/>
+<text x="589" y="496.7" text-anchor="middle" font-family="Poppins, sans-serif" font-size="7.5" font-weight="500" letter-spacing="0.1em" fill="#ffffff">PASSAGE RETRIEVAL</text>
+<rect x="739.1" y="486.5" width="147.8" height="15" rx="7.5" fill="#1c263b" stroke="#ffffff" stroke-opacity="0.25"/>
+<text x="813" y="496.7" text-anchor="middle" font-family="Poppins, sans-serif" font-size="7.5" font-weight="500" letter-spacing="0.1em" fill="#ffffff">LOAD CORPUS AT STARTUP</text>
+<rect x="956.3" y="486.5" width="53.400000000000006" height="15" rx="7.5" fill="#1c263b" stroke="#ffffff" stroke-opacity="0.25"/>
+<text x="983" y="496.7" text-anchor="middle" font-family="Poppins, sans-serif" font-size="7.5" font-weight="500" letter-spacing="0.1em" fill="#ffffff">TRACES</text>
+<rect x="105.55" y="625.5" width="82.9" height="15" rx="7.5" fill="#1c263b" stroke="#ffffff" stroke-opacity="0.25"/>
+<text x="147" y="635.7" text-anchor="middle" font-family="Poppins, sans-serif" font-size="7.5" font-weight="500" letter-spacing="0.1em" fill="#ffffff">PULL PRICES</text>
+<rect x="346.95" y="625.5" width="130.10000000000002" height="15" rx="7.5" fill="#1c263b" stroke="#ffffff" stroke-opacity="0.25"/>
+<text x="412" y="635.7" text-anchor="middle" font-family="Poppins, sans-serif" font-size="7.5" font-weight="500" letter-spacing="0.1em" fill="#ffffff">SEND DAILY BRIEFING</text>
+<rect x="643.8" y="625.5" width="112.4" height="15" rx="7.5" fill="#1c263b" stroke="#ffffff" stroke-opacity="0.25"/>
+<text x="700" y="635.7" text-anchor="middle" font-family="Poppins, sans-serif" font-size="7.5" font-weight="500" letter-spacing="0.1em" fill="#ffffff">EMBED + COMPLETE</text>
+<g transform="rotate(-90 13 410)"><rect x="-37.300000000000004" y="402.5" width="100.60000000000001" height="15" rx="7.5" fill="#1c263b" stroke="#ffffff" stroke-opacity="0.25"/><text x="13" y="412.7" text-anchor="middle" font-family="Poppins, sans-serif" font-size="7.5" font-weight="500" letter-spacing="0.1em" fill="#ffffff">DAILY BRIEFING</text></g>
+<line x1="28" y1="783" x2="1012" y2="783" stroke="#ffffff" stroke-opacity="0.3"/>
+<rect x="28" y="790" width="22" height="14" rx="3" fill="rgba(255,255,255,0.12)" stroke="#ffffff" stroke-opacity="0.75" stroke-width="1"/>
+<text x="56" y="800" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill="#ffffff" fill-opacity="0.65">Our service</text>
+<rect x="134" y="790" width="22" height="14" rx="3" fill="rgba(139,124,246,0.55)" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6"/>
+<text x="162" y="800" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill="#ffffff" fill-opacity="0.65">Focal</text>
+<rect x="209" y="790" width="22" height="14" rx="3" fill="rgba(110,185,240,0.35)" stroke="#ffffff" stroke-opacity="0.8" stroke-width="1"/>
+<text x="237" y="800" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill="#ffffff" fill-opacity="0.65">Data store</text>
+<rect x="310" y="790" width="22" height="14" rx="3" fill="rgba(16,22,36,0.28)" stroke="#ffffff" stroke-opacity="0.8" stroke-width="1" stroke-dasharray="4,3"/>
+<text x="338" y="800" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill="#ffffff" fill-opacity="0.65">External</text>
+<line x1="401" y1="797" x2="423" y2="797" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" stroke-dasharray="5,4"/>
+<text x="429" y="800" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill="#ffffff" fill-opacity="0.65">Async or return</text>
+</svg>
+</div>
+</div>
+</body>
+</html>

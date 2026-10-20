@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finpass defence in depth</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Poppins, sans-serif; background: linear-gradient(90deg,#1c263b 0%,#3a5ec0 60%,#4a82ec 100%) fixed; color: #ffffff; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 6rem 2rem 3rem; }
+.frame { max-width: 1200px; width: 100%; }
+.diagram-container { width: 100%; overflow-x: auto; }
+.eyebrow { font-family: Poppins, sans-serif; font-size: .66rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: #ffffff; opacity: .65; margin-bottom: .5rem; }
+h1 { font-family: Poppins, sans-serif; font-size: clamp(1.5rem, 2.4vw + .75rem, 2rem); font-weight: 400; letter-spacing: -.02em; line-height: 1.15; margin-bottom: 1.5rem; }
+svg { width: 100%; display: block; }
+@media print { .diagram-container { overflow-x: visible; } svg { min-width: 0 !important; } }
+</style>
+</head>
+<body>
+<div class="frame">
+<div class="diagram-container">
+<svg viewBox="0 0 1040 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="dd-t dd-d" style="min-width:1040px">
+<title id="dd-t">Finpass defence in depth: one request, eight checkpoints</title>
+<desc id="dd-d">A request passes browser, edge, frontend, router, abuse limits, authentication, input checks and recording before reaching AI, database and third parties.</desc>
+<defs>
+<mask id="gap" maskUnits="userSpaceOnUse" x="0" y="0" width="1040" height="540"><rect width="1040" height="540" fill="#fff"/><rect x="568.4" y="262" width="95.2" height="16" fill="#000"/></mask>
+<marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#ffffff"/></marker>
+</defs>
+<g mask="url(#gap)"><path d="M160,118 L173,118" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" marker-end="url(#arrow)"/><path d="M277,118 L290,118" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" marker-end="url(#arrow)"/><path d="M394,118 L407,118" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" marker-end="url(#arrow)"/><path d="M511,118 L524,118" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" marker-end="url(#arrow)"/><path d="M628,118 L641,118" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" marker-end="url(#arrow)"/><path d="M745,118 L758,118" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" marker-end="url(#arrow)"/><path d="M862,118 L875,118" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" marker-end="url(#arrow)"/><path d="M306,250 L306,320" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" marker-end="url(#arrow)"/><path d="M616,250 L616,320" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" marker-end="url(#arrow)"/><path d="M926,250 L926,320" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.2" marker-end="url(#arrow)"/></g>
+<rect x="40" y="60" width="960" height="190" rx="10" fill="rgba(255,255,255,0.04)" stroke="#ffffff" stroke-opacity="0.3" stroke-width="1"/>
+<text x="56" y="80" text-anchor="start" font-family="Poppins, sans-serif" font-size="8" font-weight="400" letter-spacing="0.14em" fill-opacity="0.65" fill="#ffffff">PIPELINE · EVERY REQUEST</text>
+<rect x="56" y="90" width="104" height="56" rx="6" fill="rgba(255,255,255,0.12)" stroke="#ffffff" stroke-opacity="0.75" stroke-width="1"/>
+<text x="70" y="122" text-anchor="start" font-family="Poppins, sans-serif" font-size="10.5" font-weight="600" fill="#ffffff">Browser</text>
+<rect x="56" y="154" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="108" y="168" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">HTTPS only</text>
+<rect x="56" y="180" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="108" y="194" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">HttpOnly cookies</text>
+<rect x="56" y="206" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="108" y="220" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">No token in URL</text>
+<rect x="173" y="90" width="104" height="56" rx="6" fill="rgba(255,255,255,0.12)" stroke="#ffffff" stroke-opacity="0.75" stroke-width="1"/>
+<text x="187" y="122" text-anchor="start" font-family="Poppins, sans-serif" font-size="10.5" font-weight="600" fill="#ffffff">Edge</text>
+<rect x="173" y="154" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="225" y="168" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">TLS 1.2+</text>
+<rect x="173" y="180" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="225" y="194" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">HSTS</text>
+<rect x="173" y="206" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="225" y="220" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">Private network</text>
+<rect x="290" y="90" width="104" height="56" rx="6" fill="rgba(255,255,255,0.12)" stroke="#ffffff" stroke-opacity="0.75" stroke-width="1"/>
+<text x="304" y="122" text-anchor="start" font-family="Poppins, sans-serif" font-size="10.5" font-weight="600" fill="#ffffff">Frontend</text>
+<rect x="290" y="154" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="342" y="168" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">CSP · nosniff</text>
+<rect x="290" y="180" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="342" y="194" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">Frame deny</text>
+<rect x="290" y="206" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="342" y="220" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">Same-origin proxy</text>
+<rect x="407" y="90" width="104" height="56" rx="6" fill="rgba(255,255,255,0.12)" stroke="#ffffff" stroke-opacity="0.75" stroke-width="1"/>
+<text x="421" y="122" text-anchor="start" font-family="Poppins, sans-serif" font-size="10.5" font-weight="600" fill="#ffffff">Router</text>
+<rect x="407" y="154" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="459" y="168" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">CORS allowlist</text>
+<rect x="407" y="180" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="459" y="194" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">Request id</text>
+<rect x="407" y="206" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="459" y="220" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">Panic recovery</text>
+<rect x="524" y="90" width="104" height="56" rx="6" fill="rgba(139,124,246,0.55)" stroke="#ffffff" stroke-width="1.6"/>
+<text x="538" y="122" text-anchor="start" font-family="Poppins, sans-serif" font-size="10.5" font-weight="600" fill="#ffffff">Abuse limits</text>
+<rect x="524" y="154" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="576" y="168" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">Per-IP limit</text>
+<rect x="524" y="180" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="576" y="194" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">5 fails lock login</text>
+<rect x="524" y="206" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="576" y="220" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">5 mails per 15 min</text>
+<rect x="641" y="90" width="104" height="56" rx="6" fill="rgba(139,124,246,0.55)" stroke="#ffffff" stroke-width="1.6"/>
+<text x="655" y="122" text-anchor="start" font-family="Poppins, sans-serif" font-size="10.5" font-weight="600" fill="#ffffff">Auth checks</text>
+<rect x="641" y="154" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="693" y="168" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">JWT 15 minutes</text>
+<rect x="641" y="180" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="693" y="194" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">Refresh rotation</text>
+<rect x="641" y="206" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="693" y="220" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">Ownership checks</text>
+<rect x="758" y="90" width="104" height="56" rx="6" fill="rgba(255,255,255,0.12)" stroke="#ffffff" stroke-opacity="0.75" stroke-width="1"/>
+<text x="772" y="122" text-anchor="start" font-family="Poppins, sans-serif" font-size="10.5" font-weight="600" fill="#ffffff">Input checks</text>
+<rect x="758" y="154" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="810" y="168" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">Body size cap</text>
+<rect x="758" y="180" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="810" y="194" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">Strict JSON</text>
+<rect x="758" y="206" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="810" y="220" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">Field validation</text>
+<rect x="875" y="90" width="104" height="56" rx="6" fill="rgba(255,255,255,0.12)" stroke="#ffffff" stroke-opacity="0.75" stroke-width="1"/>
+<text x="889" y="122" text-anchor="start" font-family="Poppins, sans-serif" font-size="10.5" font-weight="600" fill="#ffffff">Recording</text>
+<rect x="875" y="154" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="927" y="168" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">Audit chain</text>
+<rect x="875" y="180" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="927" y="194" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">Redacted logs</text>
+<rect x="875" y="206" width="104" height="22" rx="5" fill="rgba(16,22,36,0.30)"/>
+<text x="927" y="220" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" fill="#ffffff">Error ref only</text>
+<rect x="40" y="290" width="960" height="110" rx="10" fill="rgba(255,255,255,0.04)" stroke="#ffffff" stroke-opacity="0.3" stroke-width="1"/>
+<text x="56" y="310" text-anchor="start" font-family="Poppins, sans-serif" font-size="8" font-weight="400" letter-spacing="0.14em" fill-opacity="0.65" fill="#ffffff">DOWNSTREAM · AFTER THE CHECKS PASS</text>
+<rect x="56" y="320" width="300" height="52" rx="6" fill="rgba(255,255,255,0.12)" stroke="#ffffff" stroke-opacity="0.75" stroke-width="1"/>
+<text x="70" y="343" text-anchor="start" font-family="Poppins, sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">AI service</text>
+<text x="70" y="358" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill-opacity="0.7" fill="#ffffff">Internal API key · private network · no public domain</text>
+<rect x="366" y="320" width="300" height="52" rx="6" fill="rgba(111,207,133,0.30)" stroke="#ffffff" stroke-opacity="0.8" stroke-width="1"/>
+<text x="380" y="343" text-anchor="start" font-family="Poppins, sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">PostgreSQL</text>
+<text x="380" y="358" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill-opacity="0.7" fill="#ffffff">Encrypted fields · TLS · cascade delete</text>
+<rect x="676" y="320" width="300" height="52" rx="6" fill="rgba(16,22,36,0.28)" stroke="#ffffff" stroke-opacity="0.8" stroke-width="1" stroke-dasharray="4,3"/>
+<text x="690" y="343" text-anchor="start" font-family="Poppins, sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">Third parties</text>
+<text x="690" y="358" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill-opacity="0.7" fill="#ffffff">Minimised data · no provider retention</text>
+<text x="616" y="273" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" font-weight="400" letter-spacing="0.08em" fill="#ffffff">SERVICE CALLS</text>
+<rect x="40" y="420" width="960" height="90" rx="10" fill="rgba(255,255,255,0.04)" stroke="#ffffff" stroke-opacity="0.3" stroke-width="1"/>
+<text x="56" y="440" text-anchor="start" font-family="Poppins, sans-serif" font-size="8" font-weight="400" letter-spacing="0.14em" fill-opacity="0.65" fill="#ffffff">DETECTION AND RESPONSE</text>
+<rect x="56" y="446" width="300" height="52" rx="6" fill="rgba(111,207,133,0.30)" stroke="#ffffff" stroke-opacity="0.8" stroke-width="1"/>
+<text x="70" y="469" text-anchor="start" font-family="Poppins, sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">Audit trail</text>
+<text x="70" y="484" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill-opacity="0.7" fill="#ffffff">Logins, exports and deletions · Verify finds edits</text>
+<rect x="366" y="446" width="300" height="52" rx="6" fill="rgba(111,207,133,0.30)" stroke="#ffffff" stroke-opacity="0.8" stroke-width="1"/>
+<text x="380" y="469" text-anchor="start" font-family="Poppins, sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">CI security scans</text>
+<text x="380" y="484" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill-opacity="0.7" fill="#ffffff">gitleaks · govulncheck · npm audit · trivy</text>
+<rect x="676" y="446" width="300" height="52" rx="6" fill="rgba(111,207,133,0.30)" stroke="#ffffff" stroke-opacity="0.8" stroke-width="1"/>
+<text x="690" y="469" text-anchor="start" font-family="Poppins, sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">Incident runbook</text>
+<text x="690" y="484" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill-opacity="0.7" fill="#ffffff">Playbooks and breach notice template</text>
+<line x1="40" y1="520" x2="1000" y2="520" stroke="#ffffff" stroke-opacity="0.3" stroke-width="1"/>
+<rect x="40" y="527" width="22" height="14" rx="3" fill="rgba(111,207,133,0.30)" stroke="#ffffff" stroke-opacity="0.8" stroke-width="1"/>
+<text x="68" y="537" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill-opacity="0.65" fill="#ffffff">Implemented</text>
+<rect x="149.2" y="527" width="22" height="14" rx="3" fill="rgba(255,255,255,0.12)" stroke="#ffffff" stroke-opacity="0.75" stroke-width="1"/>
+<text x="177.2" y="537" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill-opacity="0.65" fill="#ffffff">Partial</text>
+<rect x="237.6" y="527" width="22" height="14" rx="3" fill="rgba(16,22,36,0.28)" stroke="#ffffff" stroke-opacity="0.8" stroke-width="1" stroke-dasharray="4,3"/>
+<text x="265.6" y="537" text-anchor="start" font-family="Poppins, sans-serif" font-size="8.5" font-weight="400" fill-opacity="0.65" fill="#ffffff">Planned</text>
+</svg>
+</div>
+</div>
+</body>
+</html>
